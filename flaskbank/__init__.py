@@ -23,6 +23,9 @@ def create_app(test_config=None):
     except OSError:
         pass
 
+    from . import db
+    db.init_app(app)
+
     @app.route("/")
     @app.route("/home")
     def home():
@@ -37,7 +40,7 @@ def create_app(test_config=None):
         return render_template('login.html', Title='login')
 
     @app.route("/register")
-    def login():
+    def register():
         return render_template('register.html', Title='register')
 
     return app
