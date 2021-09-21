@@ -18,7 +18,7 @@ def index():
     ).fetchall()
     return render_template('bank/index.html', accounts=accounts)
 
-@bp.route('/create', methods=('GET', 'POST'))
+@bp.route('/create', methods=['GET', 'POST'])
 @login_required
 def create():
     if request.method == 'POST':
@@ -44,7 +44,7 @@ def create():
         return render_template('bank/create.html')
 
 
-@bp.route('/int:id>/delete', methods=('POST'))
+@bp.route('/<int:id>/delete', methods=['POST'])
 @login_required
 def delete(id):
     get_post(id)
