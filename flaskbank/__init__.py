@@ -24,8 +24,8 @@ def create_app(test_config=None):
         pass
 
     @app.route("/")
-    @app.route("/base")
-    def base():
+    @app.route("/home")
+    def home():
         return render_template('base.html', Title='base')
 
     @app.route("/about")
@@ -38,4 +38,9 @@ def create_app(test_config=None):
     from . import auth
     app.register_blueprint(auth.bp)
 
+    from . import bank
+    app.register_blueprint(bank.bp)
+    app.add_url_rule('/', endpoint='index')
+
     return app
+
