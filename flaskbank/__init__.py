@@ -26,7 +26,7 @@ def create_app(test_config=None):
     @app.route("/")
     @app.route("/home")
     def home():
-        return render_template('home.html', Title='home')
+        return render_template('base.html', Title='base')
 
     @app.route("/about")
     def about():
@@ -37,8 +37,10 @@ def create_app(test_config=None):
 
     from . import auth
     app.register_blueprint(auth.bp)
-    app.login_blueprint(auth.bp)
+
+    from . import bank
+    app.register_blueprint(bank.bp)
+    app.add_url_rule('/', endpoint='index')
 
     return app
 
-# Teste om branch virker- 
