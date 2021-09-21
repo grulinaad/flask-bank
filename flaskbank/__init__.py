@@ -24,9 +24,9 @@ def create_app(test_config=None):
         pass
 
     @app.route("/")
-    @app.route("/home")
-    def home():
-        return render_template('home.html', Title='home')
+    @app.route("/base")
+    def base():
+        return render_template('base.html', Title='base')
 
     @app.route("/about")
     def about():
