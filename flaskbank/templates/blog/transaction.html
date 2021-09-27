@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block header %}
+    <h1>{% block title %}Transaction{% endblock %}</h1>
+{% endblock %}
+
+{% block content %}
+    <form method="post">
+        <label for="username">From account></label> 
+        <input name="username" id="username" required>
+        <label for="password">To</label>
+        <input type="password" name="password" id="password" required>
+        <label for="password">Amount</label>
+        <input type="password" name="password" id="password" required>
+        <input type="submit" value="Transfer">
+    </form>
+{% endblock %}
