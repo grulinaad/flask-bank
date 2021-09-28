@@ -12,8 +12,13 @@ bp = Blueprint('bank', __name__)
 def index():
     db = get_db()
     accounts = db.execute(
-        
+        'SELECT a.id, title, balance, owner_id, username'
+        ' FROM account a JOIN user u ON a.owner_id = a.id'
+        ' ORDER BY id DESC'
     ).fetchall()
+    # 'SELECT p.id, title, body, created, author_id, username'
+    # ' FROM post p JOIN user u ON p.author_id = u.id'
+    #   ' ORDER BY created DESC'
     return render_template('bank/index.html', accounts=accounts)
 
 @bp.route('/create', methods=('GET', 'POST'))
