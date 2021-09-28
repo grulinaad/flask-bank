@@ -9,9 +9,9 @@ from flaskbank.db import get_db
 
 bp = Blueprint('auth', __name__, url_prefix='/auth')
 
-@bp.route('/register', methods=('GET', 'SEND'))
+@bp.route('/register', methods=['GET', 'POST'])
 def register():
-    if request.method == 'SEND':
+    if request.method == 'POST':
         username = request.form['username']
         password = request.form['password']
         db = get_db()
@@ -39,9 +39,9 @@ def register():
     return render_template('auth/register.html')
 
 
-@bp.route('/login', methods=('GET', 'SEND'))
+@bp.route('/login', methods=['GET', 'POST'])
 def login():
-    if request.method == 'SEND':
+    if request.method == 'POST':
         username = request.form['username']
         password = request.form['password']
         db = get_db()
