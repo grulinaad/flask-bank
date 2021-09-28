@@ -1,17 +1,17 @@
 {% extends 'base.html' %}
 
 {% block header %}
-    <h1>{% block title %}Transaction{% endblock %}</h1>
+  <h1>{% block title %}New transaction{% endblock %}</h1>
 {% endblock %}
 
 {% block content %}
-    <form method="post">
-        <label for="username">From account></label> 
-        <input name="username" id="username" required>
-        <label for="password">To</label>
-        <input type="password" name="password" id="password" required>
-        <label for="password">Amount</label>
-        <input type="password" name="password" id="password" required>
-        <input type="submit" value="Transfer">
-    </form>
+  <form method="post">
+    <label for="from_account">From acoount: </label>
+    <input name="from_account" id="from_account" value="{{ request.form['from_account'] }}" required>
+    <label for="to_account">To acoount: </label>
+    <input name="to_account" id="to_account" value="{{ request.form['to_account'] }}" required>
+    <label for="to_account">To acoount: </label>
+    <input name="amount" id="amount" value="{{ request.form['amount'] }}" required>
+    <input type="submit" value="Save">
+  </form>
 {% endblock %}
